@@ -19,8 +19,8 @@ const isHighPriority = function(todo){
 
 
 
-const namesAndPriority = function(todo) {
-  return getTodoName(todo) + '- ' + getPriority(todo);
+const nameAndPriority = function(todo) {
+  return `${todo.text} - ${todo.priority === 2 ? 'High' : 'Low'}`;
 }
 
 const isNotComplete = function(todo){
@@ -28,7 +28,7 @@ const isNotComplete = function(todo){
 }
 
 const isLowPriority = function(todo){
-  return todo.priority !== 2
+  return todo.priority === 1
 }
 
 /***********************
@@ -40,8 +40,10 @@ todos.map((todo) => todo.text);
 const priorities = (todos)=> 
 todos.map((todo) => todo.priority);
 
-const namesAndPriorities = (todos)=>
-todos.map((todo)=> todo.namesAndPriority);
+const namesAndPriorities = function(todos) {
+  return todos.map(nameAndPriority);
+}
+
 
 const justNotComplete = (todos)=> 
 todos.filter(isNotComplete);
